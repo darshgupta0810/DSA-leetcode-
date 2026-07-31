@@ -20,12 +20,11 @@ public:
             }  
             if(st.empty()){
                 ans.push_back(-1);
-                st.push(nums2[i]);
             } 
             else{
                 ans.push_back(st.top());
-                st.push(nums2[i]);
             }
+            st.push(nums2[i]);
          }
         }
          reverse(ans.begin(),ans.end());
