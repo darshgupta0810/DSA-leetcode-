@@ -18,13 +18,8 @@ public:
         int q=8;
         int j=1;
         int sum=0;
-        for(int i=0;i<st.size();i++){
-            if(p>=q){
-                q=q+8;
-                j=j+1;
-            }
-            sum=sum+j*v[i].first;
-            p=p+1;
+        for(int i = 0; i < v.size(); i++) {
+            sum += (i / 8 + 1) * v[i].first;
         }
         return sum;
     }
