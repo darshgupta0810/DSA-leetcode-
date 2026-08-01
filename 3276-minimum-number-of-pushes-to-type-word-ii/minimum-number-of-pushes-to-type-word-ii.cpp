@@ -1,26 +1,19 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        set <char> st;
-        for(char x:word){
-            st.insert(x);
-        } 
-        map<char,int> freq;
-        for(char x:word){
-            freq[x]++;
-        } 
-        vector <pair<int,char>> v;
-        for (auto it : freq) {
-            v.push_back({it.second, it.first});
+        vector<int> freq(26, 0);
+
+        for(char c : word)
+            freq[c - 'a']++;
+
+        sort(freq.begin(), freq.end(), greater<int>());
+
+        int ans = 0;
+
+        for(int i = 0; i < 26; i++) {
+            ans += freq[i] * (i / 8 + 1);
         }
-        sort(v.rbegin(),v.rend());
-        int p=0;
-        int q=8;
-        int j=1;
-        int sum=0;
-        for(int i = 0; i < v.size(); i++) {
-            sum += (i / 8 + 1) * v[i].first;
-        }
-        return sum;
+
+        return ans;
     }
 };
