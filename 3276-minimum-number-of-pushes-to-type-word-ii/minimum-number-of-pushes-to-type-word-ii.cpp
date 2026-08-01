@@ -1,12 +1,6 @@
 class Solution {
 public:
     int minimumPushes(string word) {
-        auto cmp=[](const pair<int,char>& x, const pair<int,char>& y){
-            if(x.first!=y.first){
-                return x.first>y.first;
-             }
-            return x.second<y.second;
-        };
         set <char> st;
         for(char x:word){
             st.insert(x);
@@ -19,7 +13,7 @@ public:
         for (auto it : freq) {
             v.push_back({it.second, it.first});
         }
-        sort(v.begin(),v.end(),cmp);
+        sort(v.rbegin(),v.rend());
         int p=0;
         int q=8;
         int j=1;
